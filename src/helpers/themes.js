@@ -1,13 +1,15 @@
 
 export const lightTheme = {
-    bodyBg: "white",
-    headings: "black",
+    background: "white",
+    navbarColor: "white",
+    navbarBorder: "rgb(236, 239, 241)",
     text: "#818181",
-    logoFilter: ""
+    menuFilter: ""
   }
   export const darkTheme = {
-    bodyBg: "#141a2c",
-    headings: "white",
-    text: "#c1c1c1",
-    logoFilter: "invert(1)"
+    background: "#141a2c",
+    navbarColor: "141a2c",
+    navbarBorder: "black",
+    text: "white",
+    menuFilter: "invert(1)"
   }

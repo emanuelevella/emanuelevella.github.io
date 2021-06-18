@@ -4,10 +4,13 @@ import Navbar from './features/navbar/Navbar'
 import styled, { createGlobalStyle } from 'styled-components';
 import { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from './helpers/themes'
+import { useSelector } from 'react-redux';
+import { selectIsToggled } from './features/Switch/switchDarkMode/switchDarkModeSlicer';
 
 const GlobalStyle = createGlobalStyle`
   body, html  {
-    background-color: rgb(255, 255, 255);;
+    background-color: ${ props => props.theme.background };
+    transition: background-color 200ms linear;
     overflow: hidden;
     height:100vh;
     width: 100vw;
@@ -21,8 +24,10 @@ const Wrapper = styled.div`
 `
 
 function App() {
+  const isToggled = useSelector(selectIsToggled)
+
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={isToggled ? darkTheme : lightTheme}>
       <Wrapper>
         <GlobalStyle/>
         <Navbar/>
