@@ -1,19 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from './pages/home/Home'
 import NotFound from './pages/notFound/NotFound'
 import Navbar from './features/navbar/Navbar'
 import styled, { createGlobalStyle } from 'styled-components';
 import { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from './helpers/themes'
 import { useSelector } from 'react-redux';
-import { selectIsToggled } from './features/Switch/switchDarkMode/switchDarkModeSlicer';
+import { selectIsToggled } from './features/switch/switchDarkMode/switchDarkModeSlicer';
 
 
 const GlobalStyle = createGlobalStyle`
   body, html  {
     background-color: ${ props => props.theme.background };
     transition: background-color 200ms linear;
-    overflow: hidden;
     height:100vh;
     width: 100vw;
     margin: 0;
@@ -41,7 +41,7 @@ function App() {
         <Navbar/>
           <Switch>
               <Route exact path="/">
-                <span>Home</span>
+                <Home/>
               </Route>
               <Route path="/buy">
                 BUY

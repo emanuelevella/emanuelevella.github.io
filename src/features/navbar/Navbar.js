@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import logo from '../../assets/logo.svg'
 import menu from '../../assets/icons/menu.svg'
 import {isMobile} from 'react-device-detect';
-import SwitchDarkMode from '../Switch/switchDarkMode/SwitchDarkMode'
+import SwitchDarkMode from '../switch/switchDarkMode/SwitchDarkMode'
 import { Link } from 'react-router-dom'
 
 const Wrapper = styled.nav`
