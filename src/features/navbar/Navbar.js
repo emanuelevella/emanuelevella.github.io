@@ -3,6 +3,7 @@ import logo from '../../assets/logo.svg'
 import menu from '../../assets/icons/menu.svg'
 import {isMobile} from 'react-device-detect';
 import SwitchDarkMode from '../Switch/switchDarkMode/SwitchDarkMode'
+import { Link } from 'react-router-dom'
 
 const Wrapper = styled.nav`
     width: 100vw;
@@ -18,10 +19,11 @@ const Logo = styled.img`
     width: 15rem;
 `
 
-const Buy = styled.span`
+const Buy = styled.div`
     font-family: 'Roboto', sans-serif;
     font-weight: 200;
     font-size: 1.5rem;
+    text-decoration: none;
     color: ${ props => props.theme.text };;
     margin-left: auto;
     margin-right: 20px;
@@ -40,14 +42,14 @@ export default function Navbar() {
         if(isMobile) return <Menu src={menu}></Menu>
         return (
             <>
-            <Buy>Buy</Buy>
+            <Buy><Link to='buy'>Buy</Link></Buy>
             <SwitchDarkMode/>
             </>
         )
     }
     return (
     <Wrapper>
-       <Logo src={logo}/>
+       <Link to='/'><Logo src={logo}/></Link>
        { mobileMenu() }
     </Wrapper>
     )

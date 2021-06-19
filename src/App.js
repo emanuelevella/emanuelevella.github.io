@@ -1,11 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NotFound from './pages/notFound/NotFound'
 import Navbar from './features/navbar/Navbar'
 import styled, { createGlobalStyle } from 'styled-components';
 import { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from './helpers/themes'
 import { useSelector } from 'react-redux';
 import { selectIsToggled } from './features/Switch/switchDarkMode/switchDarkModeSlicer';
+
 
 const GlobalStyle = createGlobalStyle`
   body, html  {
@@ -15,6 +17,11 @@ const GlobalStyle = createGlobalStyle`
     height:100vh;
     width: 100vw;
     margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: ${ props => props.theme.text }
   }
 `
 
@@ -30,8 +37,8 @@ function App() {
     <ThemeProvider theme={isToggled ? darkTheme : lightTheme}>
       <Wrapper>
         <GlobalStyle/>
-        <Navbar/>
         <Router>
+        <Navbar/>
           <Switch>
               <Route exact path="/">
                 <span>Home</span>
@@ -39,6 +46,7 @@ function App() {
               <Route path="/buy">
                 BUY
               </Route>
+              <Route component={NotFound}/>
           </Switch>
         </Router>
       </Wrapper>
