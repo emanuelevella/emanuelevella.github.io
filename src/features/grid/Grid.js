@@ -52,7 +52,7 @@ export default function Grid () {
             
             <VictoryLine
               style={{
-                data: {stroke: "tomato"}
+                data: {stroke: "#f50057"}
               }}
               data={[
                 {x: new Date(1982, 1, 1), y: 125},
@@ -96,7 +96,7 @@ export default function Grid () {
             />
             <VictoryLine
               style={{
-                data: {stroke: "tomato"}
+                data: {stroke: "#f50057"}
               }}
               data={[
                 {x: new Date(1982, 1, 1), y: 125},
