@@ -1,11 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const localStorageKey = "stonksIsDarkTheme";
-const persistedTheme = localStorage.getItem(localStorageKey);
-
 const initialState = {
-    isToggled: persistedTheme ? true : false
-};
+    isToggled: false
+}
 
 const switchDarkModeSlice = createSlice({
     name: 'switchDarkMode',
@@ -13,13 +10,12 @@ const switchDarkModeSlice = createSlice({
     reducers: {
         toggle: (state) => {
             state.isToggled = !state.isToggled
-            localStorage.setItem(localStorageKey, state.isToggled);
         }
     }
 
 })
 
 export const { toggle } = switchDarkModeSlice.actions;
-export const selectIsToggled = (state) => state.switchDarkMode.isToggled;
+export const selectIsToggled = (state) => { console.log(state.switchDarkMode);return state.switchDarkMode.isToggled === true }
 
 export default switchDarkModeSlice.reducer;

@@ -4,6 +4,7 @@ import {isMobile} from 'react-device-detect';
 
 const Wrapper = styled.div`
     width: 100%;
+    height: 100%!important;
     display: flex;
     flex-flow: ${isMobile ? 'row wrap' : ''};
     flex-direction: row;
@@ -11,7 +12,6 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     margin-left: auto;
-    margin-right: auto;
 `
 
 const ImageWrapper = styled.div`
@@ -52,9 +52,13 @@ export default function HomeIntroduction() {
                 <Title>Empower your finances thanks to Stonks</Title>
                 <Description>Compare, see history and buy stocks in few simple steps.</Description>
             </TextWrapper>
-            <ImageWrapper>
-                <Image src={illustration}/>
-            </ImageWrapper>
+            { !isMobile ? 
+                <ImageWrapper>
+                    <Image src={illustration}/>
+                </ImageWrapper>
+                :
+                ""
+            }
         </Wrapper>
     )
 }

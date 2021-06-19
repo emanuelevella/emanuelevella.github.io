@@ -1,6 +1,6 @@
-import Switch from '../Switch'
+import Switch from '../switch/Switch'
 import { useSelector, useDispatch } from 'react-redux';
-import { selectIsToggled, toggle } from './switchDarkModeSlicer';
+import { selectIsToggled, toggle } from './switchDarkModeSlice';
   
 
 export default function SwitchDarkMode() {

@@ -7,7 +7,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from './helpers/themes'
 import { useSelector } from 'react-redux';
-import { selectIsToggled } from './features/switch/switchDarkMode/switchDarkModeSlicer';
+import { selectIsToggled } from './features/toggle/switchDarkMode/switchDarkModeSlice';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -32,6 +32,7 @@ const Wrapper = styled.div`
 
 function App() {
   const isToggled = useSelector(selectIsToggled)
+  console.log("isToggled: ", isToggled)
 
   return (
     <ThemeProvider theme={isToggled ? darkTheme : lightTheme}>
