@@ -1,4 +1,4 @@
-import { VictoryZoomContainer, VictoryChart, VictoryBrushContainer, VictoryLine, VictoryAxis } from 'victory';
+import { createContainer, VictoryTheme, VictoryZoomContainer, VictoryChart, VictoryBrushContainer, VictoryLine, VictoryAxis } from 'victory';
 import React, { useState } from 'react';
 import {isMobile} from 'react-device-detect';
 
@@ -7,20 +7,49 @@ export default function Grid () {
     const [zoom, setZoom] = useState(null);
     const [brush, setBrush] = useState(null);
 
+    const whiteStyle = {
+        axis: { stroke: "white" },
+        axisLabel: { fontSize: 20, padding: 30, fill: "white" },
+        ticks: { stroke: "white", size: 5, },
+        tickLabels: { fontSize: 15, padding: 5, fill: "white" }
+      }
+
+      const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
+
       return (
         <div>
           <VictoryChart
-            width={isMobile ? 350 : 1000}
+            theme={VictoryTheme.material}
+            width={isMobile ? 350 : 700}
             height={300}
             scale={{x: "time"}}
             containerComponent={
-              <VictoryZoomContainer responsive={true}
+              <VictoryZoomVoronoiContainer responsive={false}
+                labels={({ datum }) => `${Math.round(datum.y)} $`}
                 zoomDimension="x"
                 zoomDomain={zoom}
                 onZoomDomainChange={setBrush}
+                
               />
             }
           >
+            <VictoryAxis dependentAxis  style={{
+                axis: { stroke: "white" },
+                grid: { stroke: "gray" },
+                axisLabel: { fontSize: 20, padding: 30, fill: "white" },
+                ticks: { stroke: "white", size: 5, },
+                tickLabels: { fontSize: 15, padding: 5, fill: "white" }            }}
+            />
+
+            <VictoryAxis style={{
+                axis: { stroke: "white" },
+                grid: { stroke: "transparent" },
+                axisLabel: { fontSize: 20, padding: 30, fill: "white" },
+                ticks: { stroke: "white", size: 5, },
+                tickLabels: { fontSize: 15, padding: 5, fill: "white" }
+            }}
+            />
+            
             <VictoryLine
               style={{
                 data: {stroke: "tomato"}
@@ -40,12 +69,12 @@ export default function Grid () {
           </VictoryChart>
 
           <VictoryChart
-            width={isMobile ? 350 : 1000}
+            width={isMobile ? 350 : 700}
             height={90}
             scale={{x: "time"}}
             padding={{top: 0, left: 50, right: 50, bottom: 30}}
             containerComponent={
-              <VictoryBrushContainer responsive={true}
+              <VictoryBrushContainer responsive={false}
                 brushDimension="x"
                 brushDomain={brush}
                 onBrushDomainChange={setZoom}
@@ -53,6 +82,7 @@ export default function Grid () {
             }
           >
             <VictoryAxis
+            style={whiteStyle}
               tickValues={[
                 new Date(1985, 1, 1),
                 new Date(1990, 1, 1),

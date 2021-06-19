@@ -4,7 +4,7 @@ import {isMobile} from 'react-device-detect';
 
 const Wrapper = styled.div`
     width: 100%;
-    height: 100%!important;
+    height: 100vh!important;
     display: flex;
     flex-flow: ${isMobile ? 'row wrap' : ''};
     flex-direction: row;

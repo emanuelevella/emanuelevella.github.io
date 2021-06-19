@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import HomeIntroduction from '../../features/homeIntroduction/HomeIntroduction'
-import Grid from '../../features/grid/Grid'
+import FormSelectStock from '../../features/formSelectStock/FormSelectStock'
 
 const Wrapper = styled.div`
     display: flex;
@@ -12,7 +12,7 @@ export default function Home() {
     return (
         <Wrapper>
             <HomeIntroduction/>
-            <Grid/>
+            <FormSelectStock/>
         </Wrapper>
     )
 }

@@ -32,8 +32,6 @@ const Wrapper = styled.div`
 
 function App() {
   const isToggled = useSelector(selectIsToggled)
-  console.log("isToggled: ", isToggled)
-
   return (
     <ThemeProvider theme={isToggled ? darkTheme : lightTheme}>
       <Wrapper>
