@@ -16,6 +16,6 @@ const switchDarkModeSlice = createSlice({
 })
 
 export const { toggle } = switchDarkModeSlice.actions;
-export const selectIsToggled = (state) => { console.log(state.switchDarkMode);return state.switchDarkMode.isToggled === true }
+export const selectIsToggled = (state) => state.switchDarkMode.isToggled
 
 export default switchDarkModeSlice.reducer;

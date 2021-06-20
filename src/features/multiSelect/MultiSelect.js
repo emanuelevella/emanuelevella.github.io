@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import React, { Component } from 'react'
-import AsyncSelect from 'react-select'
+import React, { useState } from 'react'
+import AsyncSelect from 'react-select/async'
 
 const Wrapper = styled.div`
     display: flex;
@@ -20,31 +20,13 @@ const Subtitle = styled.h3`
     font-size: 1rem;
 `
 
-export default function MultiSelect ({ label, subtitle }) {
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-      ]
-
-    const filterColors = (inputValue) => {
-        return options.filter(i =>
-          i.label.toLowerCase().includes(inputValue.toLowerCase())
-        );
-      };
-
-    const promiseOptions = inputValue =>
-    new Promise(resolve => {
-        setTimeout(() => {
-        resolve(filterColors(inputValue));
-        }, 1000);
-    });
-
+export default function MultiSelect ({ label, subtitle, search, onChange }) {
+    const [value, setValue] = useState([])
 
     return (
         <Wrapper>
             <Label>{label}</Label>
-            <AsyncSelect cacheOptions defaultOptions loadOptions={promiseOptions} />
+            <AsyncSelect isMulti cacheOptions defaultOptions value={value} onChange={onChange} loadOptions={search} />
             <Subtitle>{subtitle}</Subtitle>
         </Wrapper>
     )

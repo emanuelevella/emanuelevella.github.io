@@ -2,7 +2,7 @@ import { createContainer, VictoryTheme, VictoryZoomContainer, VictoryChart, Vict
 import React, { useState } from 'react';
 import {isMobile} from 'react-device-detect';
 
-export default function Grid () {
+export default function Grid ({ data, tickValues }) {
 
     const [zoom, setZoom] = useState(null);
     const [brush, setBrush] = useState(null);
@@ -54,16 +54,7 @@ export default function Grid () {
               style={{
                 data: {stroke: "#f50057"}
               }}
-              data={[
-                {x: new Date(1982, 1, 1), y: 125},
-                {x: new Date(1987, 1, 1), y: 257},
-                {x: new Date(1993, 1, 1), y: 345},
-                {x: new Date(1997, 1, 1), y: 515},
-                {x: new Date(2001, 1, 1), y: 132},
-                {x: new Date(2005, 1, 1), y: 305},
-                {x: new Date(2011, 1, 1), y: 270},
-                {x: new Date(2015, 1, 1), y: 470}
-              ]}
+              data={data}
             />
 
           </VictoryChart>
@@ -83,31 +74,14 @@ export default function Grid () {
           >
             <VictoryAxis
             style={whiteStyle}
-              tickValues={[
-                new Date(1985, 1, 1),
-                new Date(1990, 1, 1),
-                new Date(1995, 1, 1),
-                new Date(2000, 1, 1),
-                new Date(2005, 1, 1),
-                new Date(2010, 1, 1),
-                new Date(2015, 1, 1)
-              ]}
+              tickValues={tickValues}
               tickFormat={(x) => new Date(x).getFullYear()}
             />
             <VictoryLine
               style={{
                 data: {stroke: "#f50057"}
               }}
-              data={[
-                {x: new Date(1982, 1, 1), y: 125},
-                {x: new Date(1987, 1, 1), y: 257},
-                {x: new Date(1993, 1, 1), y: 345},
-                {x: new Date(1997, 1, 1), y: 515},
-                {x: new Date(2001, 1, 1), y: 132},
-                {x: new Date(2005, 1, 1), y: 305},
-                {x: new Date(2011, 1, 1), y: 270},
-                {x: new Date(2015, 1, 1), y: 470}
-              ]}
+              data={data}
             />
           </VictoryChart>
       </div>
