@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { useState } from 'react'
+import React from 'react'
 import AsyncSelect from 'react-select/async'
 
 const Wrapper = styled.div`
@@ -21,12 +21,10 @@ const Subtitle = styled.h3`
 `
 
 export default function MultiSelect ({ label, subtitle, search, onChange }) {
-    const [value, setValue] = useState([])
-
     return (
         <Wrapper>
             <Label>{label}</Label>
-            <AsyncSelect isMulti cacheOptions defaultOptions value={value} onChange={onChange} loadOptions={search} />
+            <AsyncSelect isMulti cacheOptions defaultOptions onChange={onChange} loadOptions={search} />
             <Subtitle>{subtitle}</Subtitle>
         </Wrapper>
     )
