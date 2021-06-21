@@ -13,3 +13,10 @@ export const lightTheme = {
     text: "white",
     menuFilter: "invert(1)"
   }
+
+  export const whiteStyleGrid = {
+    axis: { stroke: "white" },
+    axisLabel: { fontSize: 20, padding: 30, fill: "white" },
+    ticks: { stroke: "white", size: 5, },
+    tickLabels: { fontSize: 15, padding: 5, fill: "white" }
+    }
