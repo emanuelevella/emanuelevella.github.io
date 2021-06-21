@@ -33,7 +33,8 @@ const TextWrapper = styled.div`
 `
 
 const Title = styled.span`
-    font-family: 'Fjalla One', sans-serif;    overflow: hidden;
+    font-family: 'Fjalla One', sans-serif;    
+    overflow: hidden;
     word-wrap:break-word;
     font-size: 4rem;
     color: ${ props => props.theme.text};

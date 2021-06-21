@@ -19,11 +19,11 @@ const Label = styled.div`
     font-family: Roboto;
 `
 
-export default function Grid ({ data, tickValues, legend }) {
-    const [zoom, setZoom] = useState(null);
-    const [brush, setBrush] = useState(null);
-    const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
-
+export default function Grid ({ dataSet }) {
+    const [zoom, setZoom] = useState(null)
+    const [brush, setBrush] = useState(null)
+    const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi")
+    let { data, tickValues, legend } = dataSet
     return (
         <div>
             <VictoryChart
@@ -33,19 +33,20 @@ export default function Grid ({ data, tickValues, legend }) {
                 scale={{x: "time"}}
                 containerComponent={
                     <VictoryZoomVoronoiContainer responsive={false}
-                    labels={({ datum }) => `${datum.y.toFixed(2)}$`}
-                    zoomDimension="x"
-                    zoomDomain={zoom}
-                    onZoomDomainChange={setBrush}
+                        labels={({ datum }) => `${datum.y.toFixed(2)}$`}
+                        zoomDimension="x"
+                        zoomDomain={zoom}
+                        onZoomDomainChange={setBrush}
                     />
                 }
                 >
-                <VictoryAxis dependentAxis  style={{
+                <VictoryAxis dependentAxis style={{
                     axis: { stroke: "white" },
                     grid: { stroke: "gray" },
                     axisLabel: { fontSize: 20, padding: 30, fill: "white" },
                     ticks: { stroke: "white", size: 5, },
-                    tickLabels: { fontSize: 15, padding: 5, fill: "white" }            }}
+                    tickLabels: { fontSize: 15, padding: 5, fill: "white" }            
+                    }}
                 />
 
                 <VictoryAxis style={{
@@ -54,7 +55,7 @@ export default function Grid ({ data, tickValues, legend }) {
                     axisLabel: { fontSize: 20, padding: 30, fill: "white" },
                     ticks: { stroke: "white", size: 5, },
                     tickLabels: { fontSize: 15, padding: 5, fill: "white" }
-                }}
+                    }}
                 />
                 {data.map((dataset, index) => {
                     return (
@@ -62,37 +63,34 @@ export default function Grid ({ data, tickValues, legend }) {
                             style={{
                                 data: {stroke: getColorVictoryLine(index)}
                             }}
-                            key={Math.random()+index}
+                            key={Math.random()}
                             data={dataset}
-                        />)
-                    })
-                }
-
-            </VictoryChart>
-            <Wrapper>
-                {
-                    legend.map((label, index) => {
+                        />
+                    )
+                })}
+                </VictoryChart>
+                <Wrapper>
+                    {legend.map((label, index) => {
                         return(
                             <Label key={label + index} colorIndex={getColorVictoryLine(index)}>
                                 {label}
                             </Label>
                         )
-                    })
-                }
-            </Wrapper>
-            <VictoryChart
-                width={isMobile ? 350 : 700}
-                height={90}
-                scale={{x: "time"}}
-                padding={{top: 0, left: 50, right: 50, bottom: 30}}
-                containerComponent={
-                    <VictoryBrushContainer responsive={false}
-                    brushDimension="x"
-                    brushDomain={brush}
-                    onBrushDomainChange={setZoom}
-                    />
-                }
-            >
+                    })}
+                </Wrapper>
+                <VictoryChart
+                    width={isMobile ? 350 : 700}
+                    height={90}
+                    scale={{x: "time"}}
+                    padding={{top: 0, left: 50, right: 50, bottom: 30}}
+                    containerComponent={
+                        <VictoryBrushContainer responsive={false}
+                        brushDimension="x"
+                        brushDomain={brush}
+                        onBrushDomainChange={setZoom}
+                        />
+                    }
+                >
                 <VictoryAxis
                     style={whiteStyleGrid}
                     tickValues={tickValues.length ? tickValues : [2019, 2021]}
@@ -111,6 +109,6 @@ export default function Grid ({ data, tickValues, legend }) {
                 }
             </VictoryChart>
         </div>
-      );
-  }
+    );
+}
   

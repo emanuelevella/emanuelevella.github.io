@@ -8,7 +8,7 @@ export const mapObjectToGridData = (value) => {
         yearsForAxis.add(stockDate.getFullYear())
         return acc
     }, [])
-    return { data: [result], yearsForAxis: [...yearsForAxis], legend: [value.symbol] }
+    return { data: [result], tickValues: [...yearsForAxis], legend: [value.symbol] }
 }
 
 export const mapArrayToGridDatas = (arr) => {
@@ -19,10 +19,10 @@ export const mapArrayToGridDatas = (arr) => {
     for(let index in arr) {
         mappedItem = mapObjectToGridData(arr[index])
         result[index] = mappedItem.data[0]
-        mappedItem.yearsForAxis.forEach(yearsForAxis.add, yearsForAxis)
+        mappedItem.tickValues.forEach(yearsForAxis.add, yearsForAxis)
         labels.push(...mappedItem.legend)
     }
-    return { data: result, yearsForAxis: [...yearsForAxis], legend: labels }
+    return { data: result, tickValues: [...yearsForAxis], legend: labels }
 }
 
 export const yearsToDate = (arrYears) => arrYears.map(year => new Date(year, 1, 1))

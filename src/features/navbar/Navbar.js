@@ -28,6 +28,7 @@ const Buy = styled.div`
     color: ${ props => props.theme.text };;
     margin-left: auto;
     margin-right: 20px;
+    font-family: 'Fjalla One', sans-serif;    
 `
 
 const TextHover = styled.span`
@@ -63,7 +64,7 @@ export default function Navbar() {
         if(isMobile) return <Menu src={menu}></Menu>
         return (
             <>
-            <Buy><Link to='buy'><TextHover>Buy</TextHover></Link></Buy>
+            <Buy><Link to='buy'><TextHover>BUY</TextHover></Link></Buy>
             <Avatar src={avatar}></Avatar>
             <SwitchDarkMode/>
             </>
