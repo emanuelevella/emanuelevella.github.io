@@ -62,7 +62,7 @@ export default function Grid ({ data, tickValues, legend }) {
                             style={{
                                 data: {stroke: getColorVictoryLine(index)}
                             }}
-                            key={Math.random()}
+                            key={Math.random()+index}
                             data={dataset}
                         />)
                     })
@@ -73,7 +73,7 @@ export default function Grid ({ data, tickValues, legend }) {
                 {
                     legend.map((label, index) => {
                         return(
-                            <Label colorIndex={getColorVictoryLine(index)}>
+                            <Label key={label + index} colorIndex={getColorVictoryLine(index)}>
                                 {label}
                             </Label>
                         )
