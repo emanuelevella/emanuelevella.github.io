@@ -33,25 +33,32 @@ const TextWrapper = styled.div`
 `
 
 const Title = styled.span`
-    font-family: Roboto;
-    overflow: hidden;
+    font-family: 'Fjalla One', sans-serif;    overflow: hidden;
     word-wrap:break-word;
     font-size: 4rem;
     color: ${ props => props.theme.text};
 `
 
 const Description = styled.p`
-    font-family: Roboto;
+    font-family: 'Fjalla One', sans-serif;
     font-size: 2rem;
     color: ${ props => props.theme.text};
+`
+
+const GradientText = styled.span`
+    background: linear-gradient(45deg, rgba(231,0,138,1) 0%, rgba(255,0,58,1) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
 `
 
 export default function HomeIntroduction() {
     return (
         <Wrapper>
             <TextWrapper>
-                <Title>Empower your finances thanks to Stonks</Title>
-                <Description>Compare, see history and buy stocks in few simple steps.</Description>
+                <Title>Empower your finances thanks to <GradientText>Stonks</GradientText></Title>
+                <Description>Compare, see history and buy <GradientText>stocks</GradientText> in few simple steps.</Description>
             </TextWrapper>
             { !isMobile ? 
                 <ImageWrapper>

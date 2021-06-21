@@ -3,7 +3,7 @@ export const lightTheme = {
     background: "white",
     navbarColor: "white",
     navbarBorder: "rgb(236, 239, 241)",
-    text: "#818181",
+    text: "rgba(47,47,66,255)",
     menuFilter: ""
   }
   export const darkTheme = {
