@@ -18,6 +18,7 @@ const Wrapper = styled.div`
 export default function FormSelectStock() {
     const [gridItems, setGridItems] = useState([])
     const [gridDates, setGridDates] = useState([])
+    const [gridLegend, setGridLegend] = useState([])
 
     const searchByStockName = async (input) => {
         const result = await getStocksByName(input);
@@ -32,18 +33,20 @@ export default function FormSelectStock() {
         if (!input.length) {
             setGridItems([])
             setGridDates([])
+            setGridLegend([])
             return
         }
         let stockHistory = await getStocksHistory(input)
         const gridData = stockHistory.historicalStockList ? mapArrayToGridDatas(stockHistory.historicalStockList) : mapObjectToGridData(stockHistory)
         setGridItems(gridData.data)
         setGridDates(yearsToDate(gridData.yearsForAxis))
+        setGridLegend(gridData.legend)
     }
 
     return (
         <Wrapper>
             <MultiSelect label="Compare stocks history!" subtitle="Select all the stocks you want to compare!" search={searchByStockName} onChange={handleSearchChange} />
-            <Grid data={gridItems} tickValues={gridDates}/>
+            <Grid data={gridItems} tickValues={gridDates} legend={gridLegend}/>
         </Wrapper>
     )
 

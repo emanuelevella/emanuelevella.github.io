@@ -1,14 +1,28 @@
-import { createContainer, VictoryTheme, VictoryChart, VictoryBrushContainer, VictoryLine, VictoryAxis } from 'victory';
 import React, { useState } from 'react';
+import styled from 'styled-components'
+import { createContainer, VictoryTheme, VictoryChart, VictoryBrushContainer, VictoryLine, VictoryAxis } from 'victory';
 import { whiteStyleGrid } from '../../helpers/themes'
 import { getColorVictoryLine } from '../../helpers/helpers'
 import {isMobile} from 'react-device-detect';
 
-export default function Grid ({ data, tickValues }) {
+
+const Wrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    height: 30px;
+`
+
+const Label = styled.div`
+    margin-right: 10px;
+    border-top: 2px solid ${props => props.colorIndex};
+    color: white;
+    font-family: Roboto;
+`
+
+export default function Grid ({ data, tickValues, legend }) {
     const [zoom, setZoom] = useState(null);
     const [brush, setBrush] = useState(null);
     const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
-    console.log("data ", data)
 
     return (
         <div>
@@ -19,7 +33,7 @@ export default function Grid ({ data, tickValues }) {
                 scale={{x: "time"}}
                 containerComponent={
                     <VictoryZoomVoronoiContainer responsive={false}
-                    labels={({ datum }) => `${Math.round(datum.y)} $`}
+                    labels={({ datum }) => `${datum.y.toFixed(2)}$`}
                     zoomDimension="x"
                     zoomDomain={zoom}
                     onZoomDomainChange={setBrush}
@@ -55,7 +69,17 @@ export default function Grid ({ data, tickValues }) {
                 }
 
             </VictoryChart>
-
+            <Wrapper>
+                {
+                    legend.map((label, index) => {
+                        return(
+                            <Label colorIndex={getColorVictoryLine(index)}>
+                                {label}
+                            </Label>
+                        )
+                    })
+                }
+            </Wrapper>
             <VictoryChart
                 width={isMobile ? 350 : 700}
                 height={90}
