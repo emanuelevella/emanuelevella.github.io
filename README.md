@@ -32,6 +32,18 @@
 (yarn run test)
 ```
 
+## Additional Information
+
+#### components used
+
+- redux
+- styled-components
+- react-device-detect
+- react-router-dom
+- victory charts
+- react-select
+- react-hook-form
+
 ## Author
 
 👤 **Emanuele Vella**
