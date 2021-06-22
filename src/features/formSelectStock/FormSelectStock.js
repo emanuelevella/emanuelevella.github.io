@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React, { useState } from 'react'
-import MultiSelect from '../multiSelect/MultiSelect'
+import Select from '../Select/Select'
 import Grid from '../grid/Grid'
 import { isMobile } from 'react-device-detect';
 import { getStocksByName, getStocksHistory } from '../../app/api'
@@ -40,7 +40,7 @@ export default function FormSelectStock() {
 
     return (
         <Wrapper>
-            <MultiSelect label="Compare stocks history!" subtitle="Select all the stocks you want to compare!" search={searchByStockName} onChange={handleSearchChange} />
+            <Select label="Compare stocks history!" subtitle="Select all the stocks you want to compare!" search={searchByStockName} onChange={handleSearchChange} isMultiSelect={true}/>
             <Grid dataSet={ gridData } />
         </Wrapper>
     )

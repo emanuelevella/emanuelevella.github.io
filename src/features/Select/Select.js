@@ -20,11 +20,11 @@ const Subtitle = styled.h3`
     font-size: 1rem;
 `
 
-export default function MultiSelect ({ label, subtitle, search, onChange }) {
+export default function Select ({ label, subtitle, search, onChange, isMultiSelect }) {
     return (
         <Wrapper>
             <Label>{label}</Label>
-            <AsyncSelect isMulti cacheOptions defaultOptions onChange={onChange} loadOptions={search} />
+            <AsyncSelect isMulti={isMultiSelect} cacheOptions defaultOptions onChange={onChange} loadOptions={search} />
             <Subtitle>{subtitle}</Subtitle>
         </Wrapper>
     )
