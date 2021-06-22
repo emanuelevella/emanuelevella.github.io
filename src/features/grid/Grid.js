@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import { createContainer, VictoryTheme, VictoryChart, VictoryBrushContainer, VictoryLine, VictoryAxis } from 'victory';
 import { whiteStyleGrid } from '../../helpers/themes'
@@ -24,6 +24,11 @@ export default function Grid ({ dataSet }) {
     const [brush, setBrush] = useState(null)
     const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi")
     let { data, tickValues, legend } = dataSet
+
+    useEffect(() => {
+        setZoom(null)
+    }, [data])
+
     return (
         <div>
             <VictoryChart
@@ -93,7 +98,7 @@ export default function Grid ({ dataSet }) {
                 >
                 <VictoryAxis
                     style={whiteStyleGrid}
-                    tickValues={tickValues.length ? tickValues : [2019, 2021]}
+                    tickValues={tickValues}
                     tickFormat={(x) => new Date(x).getFullYear()}
                 />
                 {data.map((dataset, index) => {
