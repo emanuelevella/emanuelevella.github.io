@@ -41,6 +41,7 @@ export default function Grid ({ dataSet }) {
                         labels={({ datum }) => `${datum.y.toFixed(2)}$`}
                         zoomDimension="x"
                         zoomDomain={zoom}
+                        disable={!data.length}
                         onZoomDomainChange={setBrush}
                     />
                 }
@@ -61,6 +62,8 @@ export default function Grid ({ dataSet }) {
                     ticks: { stroke: "white", size: 5, },
                     tickLabels: { fontSize: 15, padding: 5, fill: "white" }
                     }}
+                    tickValues={!data.length ? ["2000", "2010", "2015", "2021"] : []}
+                    tickFormat={(x) => new Date(x).getFullYear()}
                 />
                 {data.map((dataset, index) => {
                     return (
@@ -98,7 +101,7 @@ export default function Grid ({ dataSet }) {
                 >
                 <VictoryAxis
                     style={whiteStyleGrid}
-                    tickValues={tickValues}
+                    tickValues={!tickValues.length ? ["2000", "2010", "2015", "2021"] : tickValues}
                     tickFormat={(x) => new Date(x).getFullYear()}
                 />
                 {data.map((dataset, index) => {
