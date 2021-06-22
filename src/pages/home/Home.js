@@ -7,7 +7,6 @@ const Wrapper = styled.div`
     flex-direction: column;
 `
 
-
 export default function Home() {
     return (
         <Wrapper>

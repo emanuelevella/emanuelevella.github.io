@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import Select from '../Select/Select'
 import Grid from '../grid/Grid'
 import { isMobile } from 'react-device-detect';
