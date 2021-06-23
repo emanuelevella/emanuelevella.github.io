@@ -50,14 +50,14 @@ export default function SelectStockToOrder({ onSelect, stockToOrder, quantity, s
     }
 
     const setStockToOrder = (stock) => {
-        stockToOrder({ name: stock.symbol, lastDay: stock.historical[0], quantity: quantity })
+        stockToOrder({ label: stock.symbol, lastDay: stock.historical[0] })
     }
 
     return (
         <Wrapper>
             <StockWrapper>
                 <Select label="Stock to buy" subtitle="Buy with the last close price" search={searchByStockName} onChange={handleSearchChange} isMultiSelect={false} alwaysDarkMode={false} />
-                <Slider min={1} max={101} value={quantity} onChange={setQuantityToOrder} />
+                <Slider min={1} max={100} value={quantity} onChange={setQuantityToOrder} />
                 <Label>Number of stocks</Label>
             </StockWrapper>
         </Wrapper>

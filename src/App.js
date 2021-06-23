@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './pages/home/Home'
-import BuyStock from './pages/buyStock/BuyStock'
+import Order from './pages/order/Order'
 import NotFound from './pages/notFound/NotFound'
 import Navbar from './features/navbar/Navbar'
 import styled, { createGlobalStyle } from 'styled-components';
@@ -44,7 +44,7 @@ function App() {
                 <Home/>
               </Route>
               <Route path="/buy">
-                <BuyStock/>
+                <Order/>
               </Route>
               <Route component={NotFound}/>
           </Switch>

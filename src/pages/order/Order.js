@@ -5,6 +5,9 @@ import OrderHistory from '../../features/orderHistory/OrderHistory'
 import SelectStockToOrder from '../../features/selectStockToOrder/SelectStockToOrder'
 import MakeOrder from '../../features/makeOrder/MakeOrder'
 import { isMobile } from 'react-device-detect';
+import Toast, {orderSuccess, orderQuantityFail, orderPriceFail} from '../../features/toast/Toast'
+import { useSelector, useDispatch } from 'react-redux';
+import { add, remove, edit } from './ordersSlice'
 
 const Wrapper = styled.div`
     display: flex;
@@ -25,19 +28,32 @@ const OrderWrapping = styled.div`
     flex-direction: ${isMobile ? 'column' : 'row'};
 `
 
-
 export default function BuyStock() {
-    const [gridData, setGridData] = useState({ data: [], tickValues: [], legend: [] })
     const [stockToOrder, setStockToOrder] = useState(null)
+    const [gridData, setGridData] = useState({ data: [], tickValues: [], legend: [] })
     const [quantityToOrder, setQuantityToOrder] = useState(1)
+    const dispatch = useDispatch()
+    console.log(stockToOrder)
 
-    const orderStockCallback = () => {
-        console.log(quantityToOrder, stockToOrder)
-        console.log('price: ', (quantityToOrder * stockToOrder.lastDay.close))
+    const orderStockCallback = (stock) => {
+        if(!stock) return
+        const price = (quantityToOrder * stock.lastDay.close).toFixed(2)
+        if(price > 1000000) {
+            orderPriceFail()
+            return 
+        }
+        if(quantityToOrder < 1 || quantityToOrder > 100) {
+            orderQuantityFail() 
+            return
+        }
+        const stockToOrder = {label: stock.label, quantity: quantityToOrder, price: price}
+        dispatch(add(stockToOrder))
+        orderSuccess()
     }
 
     return (
         <Wrapper>
+            <Toast/>
             <OrderWrapping>
                 <SelectStockToOrder onSelect={setGridData} stockToOrder={setStockToOrder} quantity={quantityToOrder} setQuantityToOrder={setQuantityToOrder}/>
                 <MakeOrder stockToOrder={stockToOrder} quantityToOrder={quantityToOrder} makeOrder={orderStockCallback}/>

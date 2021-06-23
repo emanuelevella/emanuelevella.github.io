@@ -113,7 +113,7 @@ export default function MakeOrder({ stockToOrder, quantityToOrder, makeOrder }) 
                     <Label>Order price: </Label>
                     <Data>{(stockToOrder.lastDay.close * quantityToOrder).toFixed(2)}$</Data>
                 </Category>
-                <BuyButton type="submit" value="buy" onClick={makeOrder}/>
+                <BuyButton type="submit" value="buy" onClick={() => makeOrder(stockToOrder)}/>
             </StatisticsWrapper>
             : ''}
         </Wrapper>
