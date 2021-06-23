@@ -7,6 +7,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     width: ${isMobile ? '100%' : '50%'};
+    margin-top: 20px;
     margin-bottom: 30px;
 `
 
