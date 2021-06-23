@@ -26,8 +26,7 @@ const Label = styled.span`
     margin-bottom: 5px;
 `
 
-export default function SelectStockToOrder({ onSelect, stockToOrder }) {
-    const [quantity, setQuantity] = useState(1)
+export default function SelectStockToOrder({ onSelect, stockToOrder, quantity, setQuantityToOrder }) {
 
     const searchByStockName = async (input) => {
         const result = await getStocksByName(input);
@@ -58,7 +57,7 @@ export default function SelectStockToOrder({ onSelect, stockToOrder }) {
         <Wrapper>
             <StockWrapper>
                 <Select label="Stock to buy" subtitle="Buy with the last close price" search={searchByStockName} onChange={handleSearchChange} isMultiSelect={false} alwaysDarkMode={false} />
-                <Slider min={1} max={100} value={quantity} onChange={setQuantity} />
+                <Slider min={1} max={101} value={quantity} onChange={setQuantityToOrder} />
                 <Label>Number of stocks</Label>
             </StockWrapper>
         </Wrapper>

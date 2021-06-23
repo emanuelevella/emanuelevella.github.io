@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -14,7 +14,6 @@ const Title = styled.span`
 `
 
 export default function OrderHistory() {
-    const [gridData, setGridData] = useState({ data: [], tickValues: [], legend: [] })
 
     return (
         <Wrapper>

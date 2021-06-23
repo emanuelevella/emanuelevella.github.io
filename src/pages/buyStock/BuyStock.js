@@ -28,18 +28,22 @@ const OrderWrapping = styled.div`
 
 export default function BuyStock() {
     const [gridData, setGridData] = useState({ data: [], tickValues: [], legend: [] })
-    const [stockToOrder, setStockToOrder] = useState({})
-    
-    console.log(stockToOrder)
+    const [stockToOrder, setStockToOrder] = useState(null)
+    const [quantityToOrder, setQuantityToOrder] = useState(1)
+
+    const orderStockCallback = () => {
+        console.log(quantityToOrder, stockToOrder)
+        console.log('price: ', (quantityToOrder * stockToOrder.lastDay.close))
+    }
 
     return (
         <Wrapper>
             <OrderWrapping>
-                <SelectStockToOrder onSelect={setGridData} stockToOrder={setStockToOrder}/>
-                <MakeOrder stockToOrder={stockToOrder}/>
+                <SelectStockToOrder onSelect={setGridData} stockToOrder={setStockToOrder} quantity={quantityToOrder} setQuantityToOrder={setQuantityToOrder}/>
+                <MakeOrder stockToOrder={stockToOrder} quantityToOrder={quantityToOrder} makeOrder={orderStockCallback}/>
             </OrderWrapping>
             <GridWrapper>
-                <Grid dataSet={ gridData } />
+                <Grid dataSet={gridData} />
                 <OrderHistory/>
             </GridWrapper>
         </Wrapper>

@@ -62,8 +62,6 @@ export default function Grid ({ dataSet }) {
                     ticks: { stroke: "white", size: 5, },
                     tickLabels: { fontSize: 15, padding: 5, fill: "white" }
                     }}
-                    tickValues={!data.length ? ["2000", "2010", "2015", "2021"] : []}
-                    tickFormat={(x) => new Date(x).getFullYear()}
                 />
                 {data.map((dataset, index) => {
                     return (
