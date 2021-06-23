@@ -21,7 +21,6 @@ const Logo = styled.img`
 `
 
 const Buy = styled.div`
-    font-family: 'Roboto', sans-serif;
     font-weight: 200;
     font-size: 1.5rem;
     text-decoration: none;

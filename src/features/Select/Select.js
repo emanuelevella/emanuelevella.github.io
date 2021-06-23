@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 
 `
 const Label = styled.h1`
-    font-family: Roboto;
+    font-family: 'Fjalla One', sans-serif;    
     color: ${props => props.alwaysDarkMode ? "white" : props.theme.text};
 `
 
