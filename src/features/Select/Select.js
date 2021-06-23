@@ -11,21 +11,21 @@ const Wrapper = styled.div`
 `
 const Label = styled.h1`
     font-family: Roboto;
-    color: white;
+    color: ${props => props.alwaysDarkMode ? "white" : props.theme.text};
 `
 
 const Subtitle = styled.h3`
     font-family: Roboto;
-    color: white;
+    color: ${props => props.alwaysDarkMode === true ? "white" : props.theme.text};
     font-size: 1rem;
 `
 
-export default function Select ({ label, subtitle, search, onChange, isMultiSelect }) {
+export default function Select ({ label, subtitle, search, onChange, isMultiSelect, alwaysDarkMode }) {
     return (
         <Wrapper>
-            <Label>{label}</Label>
+            <Label alwaysDarkMode={alwaysDarkMode}>{label}</Label>
             <AsyncSelect isMulti={isMultiSelect} cacheOptions defaultOptions onChange={onChange} loadOptions={search} />
-            <Subtitle>{subtitle}</Subtitle>
+            <Subtitle alwaysDarkMode={alwaysDarkMode}>{subtitle}</Subtitle>
         </Wrapper>
     )
 }

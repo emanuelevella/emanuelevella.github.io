@@ -1,22 +1,24 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import Grid from '../../features/grid/Grid'
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    height: 100vh;
-    background-color: rgba(47,47,66,255);
+    align-items: center;
+    width: 100%;
+    font-family: Roboto
+`
+const Title = styled.span`
+    margin-top: 10px;
+    color: white
 `
 
-
-export default function BuyStock() {
+export default function OrderHistory() {
     const [gridData, setGridData] = useState({ data: [], tickValues: [], legend: [] })
 
     return (
         <Wrapper>
-            <Grid dataSet={ gridData } />
+            <Title>Order History</Title>
         </Wrapper>
     )
 }

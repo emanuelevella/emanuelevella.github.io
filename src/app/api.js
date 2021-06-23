@@ -14,3 +14,11 @@ export const getStocksHistory = (arrayOfStocksNames) => {
             (error) => { console.log(error) }
         )
 }
+
+export const getStockHistory = (name) => {
+    return fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${name}?apikey=${process.env.REACT_APP_APIKEY}`)
+        .then(
+            (result) => result.json(),
+            (error) => { console.log(error) }
+        )
+}

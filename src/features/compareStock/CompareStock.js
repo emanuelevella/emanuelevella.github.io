@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import Select from '../Select/Select'
+import Select from '../select/Select'
 import Grid from '../grid/Grid'
 import { isMobile } from 'react-device-detect';
 import { getStocksByName, getStocksHistory } from '../../app/api'
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `
 
 
-export default function FormSelectStock() {
+export default function CompareStock() {
     const [gridData, setGridData] = useState({ data: [], tickValues: [], legend: [] })
 
     const searchByStockName = async (input) => {
@@ -40,7 +40,7 @@ export default function FormSelectStock() {
 
     return (
         <Wrapper>
-            <Select label="Compare stocks history!" subtitle="Select all the stocks you want to compare!" search={searchByStockName} onChange={handleSearchChange} isMultiSelect={true}/>
+            <Select label="Compare stocks history!" subtitle="Select all the stocks you want to compare!" search={searchByStockName} onChange={handleSearchChange} isMultiSelect={true} alwaysDarkMode={true} />
             <Grid dataSet={ gridData } />
         </Wrapper>
     )
