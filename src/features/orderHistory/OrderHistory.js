@@ -72,6 +72,9 @@ const StyledEdiText = styled(EdiText)`
         width: 50px;
         display: none;
     }
+    input, textarea {
+        width: 50px;
+    }
 `
 
 export default function OrderHistory() {

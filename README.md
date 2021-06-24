@@ -14,6 +14,16 @@
 
 ### ✨ [Demo](https://manyuvll.github.io/stonks)
 
+## Prerequisite
+
+On the root of the project create a .env files that will store the api key like this:
+
+```sh
+
+REACT_APP_APIKEY=yourapikey
+
+```
+
 ## Install
 
 ```sh
@@ -42,7 +52,9 @@
 - react-router-dom
 - victory charts
 - react-select
-- react-hook-form
+- react-smooth-range-input
+- react-toastify
+- react-editext
 
 ## Author
 
