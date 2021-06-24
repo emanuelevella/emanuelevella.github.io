@@ -2,7 +2,7 @@
   "name": "stonks",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://manyuvll.github.io/Stonks",
+  "homepage": "https://manyuvll.github.io/Stonks/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^4.2.4",
