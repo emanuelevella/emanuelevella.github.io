@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Slider from 'react-smooth-range-input';
 import { isMobile } from 'react-device-detect';

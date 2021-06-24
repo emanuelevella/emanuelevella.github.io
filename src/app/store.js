@@ -5,6 +5,6 @@ import ordersReducer from '../pages/order/ordersSlice'
 export const store = configureStore({
   reducer: {
     switchDarkMode: switchDarkModeReducer,
-    ordersReducer
+    orders: ordersReducer
   },
 });
