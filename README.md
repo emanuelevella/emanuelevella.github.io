@@ -12,7 +12,7 @@
 
 > SPA that lets you compare stock closing prices, simulate buy and see pending orders.
 
-### ✨ [Demo](https://manyuvll.github.io/stonks)
+### ✨ [Demo](https://manyuvll.github.io/Stonks)
 
 ## Prerequisite
 
