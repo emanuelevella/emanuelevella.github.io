@@ -22,11 +22,14 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: Install packages
-        run: npm install
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install Yarn packages
+        run: yarn
 
       - name: Build project
-        run: npm run build
+        run: yarn build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
