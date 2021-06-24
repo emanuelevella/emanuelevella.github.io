@@ -20,7 +20,7 @@ const Subtitle = styled.h3`
     font-size: 1rem;
 `
 
-export default function Select ({ label, subtitle, search, onChange, isMultiSelect, alwaysDarkMode }) {
+export default function InputSelect ({ label, subtitle, search, onChange, isMultiSelect, alwaysDarkMode }) {
     return (
         <Wrapper>
             <Label alwaysDarkMode={alwaysDarkMode}>{label}</Label>
