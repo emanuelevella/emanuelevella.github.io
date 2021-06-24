@@ -1,10 +1,13 @@
+import { useRef, useState } from 'react';
 import styled from 'styled-components'
 import logo from '../../assets/logo.svg'
 import avatar from '../../assets/avatar.png'
-import menu from '../../assets/icons/menu.svg'
 import {isMobile} from 'react-device-detect';
 import SwitchDarkMode from '../toggle/switchDarkMode/SwitchDarkMode'
 import { Link } from 'react-router-dom'
+import Burger from '../burger/Burger'
+import Menu from '../menu/Menu'
+import { useOnClickOutside } from '../../helpers/hooks';
 
 const Wrapper = styled.nav`
     width: 100vw;
@@ -38,13 +41,12 @@ const TextHover = styled.span`
         -webkit-text-fill-color: transparent;
     }
 `
-
-const Menu = styled.img`
-    height: auto;
-    width: 3rem;
-    margin-left: auto;
-    margin-right: 20px;
-    filter: ${props => props.theme.menuFilter};
+const BurgerWrapper = styled.div`
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    margin-right: 30px;
+    z-index: 99;
 `
 
 const Avatar = styled.img`
@@ -59,8 +61,20 @@ const Avatar = styled.img`
 `
 
 export default function Navbar() {
+    const [open, setOpen] = useState(false);
+    const node = useRef();
+  
+    useOnClickOutside(node, () => setOpen(false));
+
     const mobileMenu = () => {
-        if(isMobile) return <Menu src={menu}></Menu>
+        if(isMobile) {
+            return (
+                <BurgerWrapper ref={node}>
+                        <Burger open={open} setOpen={setOpen} />
+                        <Menu open={open} setOpen={setOpen} />
+                </BurgerWrapper>
+            )
+        }
         return (
             <>
             <Buy><Link to='buy'><TextHover>BUY</TextHover></Link></Buy>
