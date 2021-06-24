@@ -4,7 +4,7 @@ import Slider from 'react-smooth-range-input';
 import { isMobile } from 'react-device-detect';
 import Select from '../select/Select'
 import { getStocksByName, getStockHistory } from '../../app/api'
-import { mapObjectToGridData, yearsToDate } from '../../helpers/helpers'
+import { mapObjectToChartData, yearsToDate } from '../../helpers/helpers'
 
 const Wrapper = styled.div`
     display: flex;
@@ -34,18 +34,18 @@ export default function SelectStockToOrder({ onSelect, stockToOrder, quantity, s
     }
 
     const handleSearchChange = (inputValue) => {
-        populateGrid(inputValue)
+        populateChart(inputValue)
     }
 
-    const populateGrid = async (input) => {
+    const populateChart = async (input) => {
         if (!input) {
             onSelect({ data: [], tickValues: [], legend: [] })
             return
         }
         const stockHistory = await getStockHistory(input.value)
-        const newGridData = mapObjectToGridData(stockHistory)
-        newGridData.tickValues = yearsToDate(newGridData.tickValues)
-        onSelect(newGridData)
+        const newChartData = mapObjectToChartData(stockHistory)
+        newChartData.tickValues = yearsToDate(newChartData.tickValues)
+        onSelect(newChartData)
         setStockToOrder(stockHistory)
     }
 

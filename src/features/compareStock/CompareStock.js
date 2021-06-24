@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Select from '../select/Select'
-import Grid from '../grid/Grid'
+import Chart from '../chart/Chart'
 import { isMobile } from 'react-device-detect';
 import { getStocksByName, getStocksHistory } from '../../app/api'
-import { mapObjectToGridData, mapArrayToGridDatas, yearsToDate } from '../../helpers/helpers'
+import { mapObjectToChartData, mapArrayToChartDatas, yearsToDate } from '../../helpers/helpers'
 
 const Wrapper = styled.div`
     background-color: rgba(47,47,66,255);
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
 
 export default function CompareStock() {
-    const [gridData, setGridData] = useState({ data: [], tickValues: [], legend: [] })
+    const [chartData, setChartData] = useState({ data: [], tickValues: [], legend: [] })
 
     const searchByStockName = async (input) => {
         const result = await getStocksByName(input);
@@ -24,24 +24,24 @@ export default function CompareStock() {
     }
 
     const handleSearchChange = (inputValue) => {
-        populateGrid(inputValue)
+        populateChart(inputValue)
     }
 
-    const populateGrid = async (input) => {
+    const populateChart = async (input) => {
         if (!input.length) {
-            setGridData({ data: [], tickValues: [], legend: [] })
+            setChartData({ data: [], tickValues: [], legend: [] })
             return
         }
         let stockHistory = await getStocksHistory(input)
-        const newGridData = stockHistory.historicalStockList ? mapArrayToGridDatas(stockHistory.historicalStockList) : mapObjectToGridData(stockHistory)
-        newGridData.tickValues = yearsToDate(newGridData.tickValues)
-        setGridData(newGridData)
+        const newChartData = stockHistory.historicalStockList ? mapArrayToChartDatas(stockHistory.historicalStockList) : mapObjectToChartData(stockHistory)
+        newChartData.tickValues = yearsToDate(newChartData.tickValues)
+        setChartData(newChartData)
     }
 
     return (
         <Wrapper>
             <Select label="Compare stocks history!" subtitle="Select all the stocks you want to compare!" search={searchByStockName} onChange={handleSearchChange} isMultiSelect={true} alwaysDarkMode={true} />
-            <Grid dataSet={ gridData } />
+            <Chart dataSet={ chartData } />
         </Wrapper>
     )
 

@@ -1,4 +1,4 @@
-export const mapObjectToGridData = (value) => {
+export const mapObjectToChartData = (value) => {
     let result = []
     let yearsForAxis = new Set()
     result = value.historical.reduce((acc, curr) => { 
@@ -11,13 +11,13 @@ export const mapObjectToGridData = (value) => {
     return { data: [result], tickValues: [...yearsForAxis], legend: [value.symbol] }
 }
 
-export const mapArrayToGridDatas = (arr) => {
+export const mapArrayToChartDatas = (arr) => {
     let result = []
     let yearsForAxis = new Set()
     let mappedItem = null
     let labels = []
     for(let index in arr) {
-        mappedItem = mapObjectToGridData(arr[index])
+        mappedItem = mapObjectToChartData(arr[index])
         result[index] = mappedItem.data[0]
         mappedItem.tickValues.forEach(yearsForAxis.add, yearsForAxis)
         labels.push(...mappedItem.legend)

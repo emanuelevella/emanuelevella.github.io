@@ -19,7 +19,7 @@ const Label = styled.div`
     font-family: Roboto;
 `
 
-export default function Grid ({ dataSet }) {
+export default function Chart ({ dataSet }) {
     const [zoom, setZoom] = useState(null)
     const [brush, setBrush] = useState(null)
     const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi")

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import Grid from '../../features/grid/Grid'
+import Chart from '../../features/chart/Chart'
 import OrderHistory from '../../features/orderHistory/OrderHistory'
 import SelectStockToOrder from '../../features/selectStockToOrder/SelectStockToOrder'
 import MakeOrder from '../../features/makeOrder/MakeOrder'
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
     min-height: 100vh;
     height: 100vh;
 `
-const GridWrapper = styled.div`
+const ChartWrapper = styled.div`
     display: flex;
     flex-direction: ${isMobile ? 'column' : 'row'};
     min-height: 500px;
@@ -30,7 +30,7 @@ const OrderWrapping = styled.div`
 
 export default function BuyStock() {
     const [stockToOrder, setStockToOrder] = useState(null)
-    const [gridData, setGridData] = useState({ data: [], tickValues: [], legend: [] })
+    const [chartData, setChartData] = useState({ data: [], tickValues: [], legend: [] })
     const [quantityToOrder, setQuantityToOrder] = useState(1)
     const dispatch = useDispatch()
     console.log(stockToOrder)
@@ -55,13 +55,13 @@ export default function BuyStock() {
         <Wrapper>
             <Toast/>
             <OrderWrapping>
-                <SelectStockToOrder onSelect={setGridData} stockToOrder={setStockToOrder} quantity={quantityToOrder} setQuantityToOrder={setQuantityToOrder}/>
+                <SelectStockToOrder onSelect={setChartData} stockToOrder={setStockToOrder} quantity={quantityToOrder} setQuantityToOrder={setQuantityToOrder}/>
                 <MakeOrder stockToOrder={stockToOrder} quantityToOrder={quantityToOrder} makeOrder={orderStockCallback}/>
             </OrderWrapping>
-            <GridWrapper>
-                <Grid dataSet={gridData} />
+            <ChartWrapper>
+                <Chart dataSet={chartData} />
                 <OrderHistory/>
-            </GridWrapper>
+            </ChartWrapper>
         </Wrapper>
     )
 }

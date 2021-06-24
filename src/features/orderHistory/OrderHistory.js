@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { selectPendingOrders } from '../../pages/order/ordersSlice'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Wrapper = styled.div`
     display: flex;
