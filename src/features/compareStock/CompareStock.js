@@ -4,7 +4,7 @@ import Chart from '../chart/Chart'
 import { isMobile } from 'react-device-detect';
 import { getStocksByName, getStocksHistory } from '../../app/api'
 import { mapObjectToChartData, mapArrayToChartDatas, yearsToDate } from '../../helpers/helpers'
-import Select from '../InputSelect/InputSelect'
+import Select from '../select/Select'
 
 const Wrapper = styled.div`
     background-color: rgba(47,47,66,255);

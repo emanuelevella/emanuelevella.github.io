@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Slider from 'react-smooth-range-input';
 import { isMobile } from 'react-device-detect';
-import Select from '../InputSelect/InputSelect'
+import Select from '../select/Select'
 import { getStocksByName, getStockHistory } from '../../app/api'
 import { mapObjectToChartData, yearsToDate } from '../../helpers/helpers'
 
