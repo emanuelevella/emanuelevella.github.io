@@ -6,8 +6,8 @@ import SelectStockToOrder from '../../features/selectStockToOrder/SelectStockToO
 import MakeOrder from '../../features/makeOrder/MakeOrder'
 import { isMobile } from 'react-device-detect';
 import Toast, {orderSuccess, orderQuantityFail, orderPriceFail} from '../../features/toast/Toast'
-import { useSelector, useDispatch } from 'react-redux';
-import { add, remove, edit } from './ordersSlice'
+import { useDispatch } from 'react-redux';
+import { add } from './ordersSlice'
 
 const Wrapper = styled.div`
     display: flex;
@@ -18,7 +18,6 @@ const Wrapper = styled.div`
 const ChartWrapper = styled.div`
     display: flex;
     flex-direction: ${isMobile ? 'column' : 'row'};
-    min-height: 500px;
     height: 100%;
     background-color: rgba(47,47,66,255);
 `
@@ -33,7 +32,6 @@ export default function BuyStock() {
     const [chartData, setChartData] = useState({ data: [], tickValues: [], legend: [] })
     const [quantityToOrder, setQuantityToOrder] = useState(1)
     const dispatch = useDispatch()
-    console.log(stockToOrder)
 
     const orderStockCallback = (stock) => {
         if(!stock) return
@@ -46,7 +44,7 @@ export default function BuyStock() {
             orderQuantityFail() 
             return
         }
-        const stockToOrder = {label: stock.label, quantity: quantityToOrder, price: price}
+        const stockToOrder = {label: stock.label, quantity: quantityToOrder, price: price, unitPrice: stock.lastDay.close}
         dispatch(add(stockToOrder))
         orderSuccess()
     }
